@@ -87,12 +87,6 @@ Ce modèle représente un utilisateur et inclut :
 - Un **nom** et une **date de création**.
 - **Relations** avec les sessions, les comptes tiers (OAuth) et les tâches (`Task`, qui peut être modifié).
 
-#### 🔹 **`Session`** (Session utilisateur)
-Gère les sessions actives avec NextAuth.js :
-- Utilise un **sessionToken** unique.
-- Contient une **date d’expiration**.
-- Relie la session à un **utilisateur** (`User`).
-
 #### 🔹 **`Account en commentaire si vous voulez l'ajouter`** (Comptes OAuth)
 Stocke les informations des connexions avec des services externes (`Google, GitHub, etc.`) :
 - Type et fournisseur (`provider`).
