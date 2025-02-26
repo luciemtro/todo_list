@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { loginUser } from "@/actions/auth";
+import { loginUser } from "@/actions/authAction";
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 

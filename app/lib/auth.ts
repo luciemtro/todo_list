@@ -39,5 +39,21 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.userId = user.id; // ✅ Ajout de `userId` au token
+        console.log("🔹 JWT mis à jour avec userId:", token.userId);
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token.userId) {
+        session.user.id = token.userId; // ✅ Ajout de `userId` à `session.user`
+        console.log("🔹 Session mise à jour avec userId:", session.user.id);
+      }
+      return session;
+    },
+  },
   secret: process.env.NEXTAUTH_SECRET,
 };

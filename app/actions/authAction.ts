@@ -3,6 +3,8 @@ import { loginSchema } from "@/lib/validation";
 import { registerSchema } from "@/lib/validation";
 import { prisma } from "@/lib/prisma";
 import bcrypt from "bcryptjs";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 export async function registerUser(formData: FormData) {
   try {
@@ -74,5 +76,24 @@ export async function loginUser(formData: FormData) {
         global: "Une erreur est survenue. Veuillez réessayer plus tard.",
       },
     };
+  }
+}
+
+// 🟢 Étape 1: Créer une fonction pour obtenir la session côté serveur
+// 🟢 Étape 2: Utiliser la fonction getSession de NextAuth
+// 🟢 Étape 3: Retourner la session
+// 🟢 Étape 4: Gérer les erreurs
+// 🟢 Étape 5: Exporter la fonction
+
+export async function getSession() {
+  try {
+    const session = await getServerSession(authOptions);
+    if (!session) {
+      return null;
+    }
+    return session;
+  } catch (error) {
+    console.error("Erreur lors de la récupération de la session :", error);
+    return null;
   }
 }
