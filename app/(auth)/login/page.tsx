@@ -87,7 +87,7 @@ export default function LoginPage() {
           Se connecter
         </button>
 
-        <Link href="/auth/register">
+        <Link href="/register">
           <p className="text-blue-500 text-center">
             Pas encore inscrit ? Créer un compte ici !
           </p>
